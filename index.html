@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abraham Diress</title>
-<meta name="description" content="Abraham Diress — Data Science MS at Fordham. Software engineer building LLM, RAG and agentic AI systems.">
+<meta name="description" content="Abraham Diress — software engineer building backends, distributed systems and AI agents. M.S. Data Science at Fordham, ex-Turing.">
+<meta property="og:title" content="Abraham Diress — Software Engineer">
+<meta property="og:description" content="Backends, distributed systems and AI agents that ship. Ex-Turing · Fordham M.S. Data Science.">
+<meta property="og:url" content="https://abraham-diress.github.io/">
+<meta name="theme-color" content="#1e1e2e">
 <link rel="icon" type="image/svg+xml" href="favicon.svg" id="favicon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,6 +131,22 @@
   /* projects */
   .projects { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
   .proj { display:flex; flex-direction:column; }
+  .proj.wide { grid-column:span 2; }
+  .proj.wide .cover, .proj.wide + .proj .cover { height:200px; }
+  .proj .kicker { font-size:11px; color:var(--green); margin-bottom:4px; letter-spacing:.5px; }
+  .proj ul.wins { list-style:none; margin-top:10px; }
+  .proj ul.wins li { font-size:12.5px; color:var(--sub); padding-left:18px; position:relative; margin-top:6px; }
+  .proj ul.wins li::before { content:'✓'; position:absolute; left:0; color:var(--green); }
+  .proj.nolink { cursor:default; }
+
+  /* toolbox */
+  .toolbox { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .toolbox .card { padding:20px; }
+  .toolbox h3 { font-size:14px; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .toolbox h3 span { color:var(--accent); }
+  .toolbox .tags { margin-top:0; }
+  .toolbox .tag-chip { transition:background .2s, color .2s; }
+  .toolbox .tag-chip:hover { background:var(--accent); color:var(--base); }
   .proj:hover { transform:translateY(-4px); }
   .cover { height:170px; position:relative; overflow:hidden; border-bottom:1px solid var(--s0); background:var(--crust); }
   .cover canvas { width:100%; height:100%; display:block; }
@@ -258,6 +278,8 @@
     .hero { grid-template-columns:1fr; min-height:auto; padding-top:30px; }
     .stage { max-width:440px; width:100%; margin:0 auto; }
     .projects { grid-template-columns:1fr; }
+    .proj.wide { grid-column:auto; }
+    .toolbox { grid-template-columns:repeat(2,1fr); }
     .stats { grid-template-columns:repeat(2,1fr); }
     .edu { grid-template-columns:1fr; }
     .bento { grid-template-columns:repeat(2,1fr); }
@@ -270,6 +292,8 @@
     .links { gap:14px; }
     .clock { font-size:24px; }
     .c-clock,.c-click { grid-column:span 2; }
+    .toolbox { grid-template-columns:1fr; }
+    .stat .v { font-size:26px; }
   }
   @media (prefers-reduced-motion:reduce) {
     *,*::before,*::after { animation:none !important; transition:none !important; }
@@ -287,6 +311,7 @@
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
+      <a href="#toolbox">Toolbox</a>
       <a href="#dashboard">Dashboard</a>
       <a href="#contact" class="keep">Contact</a>
       <span class="kbd-hint keep" id="themeCycle" title="Cycle theme (press T)">T theme</span>
@@ -299,11 +324,11 @@
     <!-- HERO -->
     <section class="hero" id="about" style="padding-top:40px">
       <div>
-        <div class="status"><span class="dot"></span> open to internships · NYC / relocate</div>
+        <div class="status"><span class="dot"></span> open to SWE internships · NYC / relocate</div>
         <h1>Hey! I'm <span class="name">Abraham Diress</span> <span class="wave">👋</span></h1>
         <div class="typed"><span id="typed"></span><span class="caret"></span></div>
-        <p>I'm a Data Science MS student at <a class="ul" href="https://www.fordham.edu" target="_blank" rel="noopener">Fordham</a>, working where <span class="hl">data meets software engineering</span>. I build <span class="hl">ML and data-intensive apps</span> end to end: the pipeline, the model, and the product people actually use.</p>
-        <p>Currently a <span class="hl">Research Assistant at Fordham</span>. Previously a SWE at <a class="ul" href="https://www.turing.com/" target="_blank" rel="noopener">Turing</a> and <a class="ul" href="https://a2sv.org" target="_blank" rel="noopener">A2SV</a>, and a contributor to <span class="hl">INCLUDE</span> (ICLR 2025).</p>
+        <p>I'm a <span class="hl">software engineer</span> who likes the parts that have to keep working: <span class="hl">backends, distributed systems, and AI agents</span> that real people depend on. Right now I'm doing an M.S. in Data Science at <a class="ul" href="https://www.fordham.edu" target="_blank" rel="noopener">Fordham</a>.</p>
+        <p>Most recently I built <span class="hl">Suq</span>, an AI sales agent on Telegram that now serves <span class="hl">25K+ customers</span> and takes payments right in the chat. Before that I spent over two years at <a class="ul" href="https://www.turing.com/" target="_blank" rel="noopener">Turing</a> shipping the platform that produces LLM training data for Apple, Mistral AI and ServiceNow, and I started out at <a class="ul" href="https://a2sv.org" target="_blank" rel="noopener">A2SV</a>.</p>
         <p>Off the clock: paddling, hiking, and cooking Ethiopian food 🍲</p>
         <div class="socials">
           <a class="btn" href="https://github.com/abraham-diress" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
@@ -313,7 +338,7 @@
         </div>
       </div>
       <div class="stage" id="stage">
-        <span class="tag tl">embedding_space.py</span>
+        <span class="tag tl">agent_graph.py</span>
         <span class="tag tr">● live</span>
         <span class="tag bl">drag to rotate</span>
         <span class="tag br" id="nodeCount">0 nodes</span>
@@ -327,10 +352,10 @@
 
   <div class="wrap">
     <div class="stats">
-      <div class="card stat reveal"><div class="v" data-count="1000" data-suffix="+">0</div><div class="l">labelers on a platform I helped build</div></div>
-      <div class="card stat reveal"><div class="v" data-count="80" data-suffix="%">0</div><div class="l">less manual review time on LLM datasets</div></div>
-      <div class="card stat reveal"><div class="v" data-count="35" data-suffix="%">0</div><div class="l">lower LLM inference cost</div></div>
-      <div class="card stat reveal"><div class="v" data-count="44">0</div><div class="l">languages covered by INCLUDE (ICLR '25)</div></div>
+      <div class="card stat reveal"><div class="v" data-count="25" data-suffix="K+">0</div><div class="l">customers served by the AI sales agent I built</div></div>
+      <div class="card stat reveal"><div class="v" data-count="30" data-prefix="$" data-suffix="K+">0</div><div class="l">in sales paid inside a chat window</div></div>
+      <div class="card stat reveal"><div class="v" data-count="125" data-suffix="h">0</div><div class="l">of reviewer time saved every week at Turing</div></div>
+      <div class="card stat reveal"><div class="v" data-count="1000" data-suffix="+">0</div><div class="l">labelers using a platform I helped build</div></div>
     </div>
 
     <!-- PROJECTS -->
@@ -340,28 +365,51 @@
         <a href="https://github.com/abraham-diress?tab=repositories" target="_blank" rel="noopener">View all →</a>
       </div>
       <div class="projects">
-        <a class="card proj reveal" href="https://github.com/abraham-diress/DocIntel" target="_blank" rel="noopener">
-          <div class="cover"><canvas data-art="rag"></canvas><span class="badge">Jun – Aug 2026</span></div>
+        <a class="card proj wide reveal" href="https://github.com/abraham-diress/tributary" target="_blank" rel="noopener">
+          <div class="cover"><canvas data-art="log"></canvas><span class="badge">Jul 2026 · distributed systems</span></div>
           <div class="body">
-            <h3>DocIntel <span class="arrow">↗</span></h3>
-            <p>A RAG platform for querying technical documents. It uses LangGraph agents, hybrid retrieval over Qdrant, guardrails, and response evaluation and observability through RAGAS and LangSmith.</p>
-            <div class="tags"><span class="tag-chip">langgraph</span><span class="tag-chip">qdrant</span><span class="tag-chip">rag</span><span class="tag-chip">ragas</span><span class="tag-chip">docker</span></div>
+            <div class="kicker">// a message log, from scratch</div>
+            <h3>Tributary <span class="arrow">↗</span></h3>
+            <p>What actually happens inside Kafka? To find out, I wrote my own in Java. Producers append to topics that are split into partitions, stored on disk and copied across brokers. Kill the leader and another broker takes over.</p>
+            <ul class="wins">
+              <li>Segmented on-disk logs with offset indexes, spoken over a custom binary TCP protocol</li>
+              <li>Zero acknowledged messages lost through a broker crash, thanks to replication + ZooKeeper failover</li>
+              <li>Built alongside Claude Code, with every AI-written change reviewed and pinned down by JUnit tests</li>
+            </ul>
+            <div class="tags"><span class="tag-chip">java</span><span class="tag-chip">zookeeper</span><span class="tag-chip">tcp</span><span class="tag-chip">replication</span><span class="tag-chip">junit</span></div>
           </div>
         </a>
-        <a class="card proj reveal" href="https://github.com/abraham-diress/ramhub" target="_blank" rel="noopener">
-          <div class="cover"><canvas data-art="board"></canvas><span class="badge">Aug 2026 – now</span></div>
+        <div class="card proj nolink reveal">
+          <div class="cover"><canvas data-art="chat"></canvas><span class="badge">2026 · in production</span></div>
           <div class="body">
-            <h3>RamHub <span class="arrow">↗</span></h3>
-            <p>Fordham's international students had no central place for course guidance, paperwork deadlines, or the right contacts. RamHub brings those together, with drag-and-drop task boards and a calendar for tracking personal deadlines.</p>
-            <div class="tags"><span class="tag-chip">fastapi</span><span class="tag-chip">postgresql</span><span class="tag-chip">next.js</span><span class="tag-chip">typescript</span></div>
+            <div class="kicker">// client work · Leo Business Group</div>
+            <h3>Suq ሱቅ</h3>
+            <p>An AI sales agent for a fashion retailer that sells through Telegram. It answers shoppers in seconds, finds products, and collects payment without leaving the chat. I built it end to end.</p>
+            <div class="tags"><span class="tag-chip">fastapi</span><span class="tag-chip">postgresql</span><span class="tag-chip">redis</span><span class="tag-chip">llm agents</span></div>
+          </div>
+        </div>
+        <a class="card proj reveal" href="https://github.com/abraham-diress/DocIntel" target="_blank" rel="noopener">
+          <div class="cover"><canvas data-art="rag"></canvas><span class="badge">Aug 2026</span></div>
+          <div class="body">
+            <h3>DocIntel <span class="arrow">↗</span></h3>
+            <p>Ask plain-language questions about a pile of PDFs, Word docs and slide decks and get grounded answers. A LangGraph agent plans the retrieval over Qdrant, with guardrails in front.</p>
+            <div class="tags"><span class="tag-chip">langgraph</span><span class="tag-chip">qdrant</span><span class="tag-chip">agentic rag</span><span class="tag-chip">streamlit</span></div>
+          </div>
+        </a>
+        <a class="card proj reveal" href="https://github.com/abraham-diress/hestia" target="_blank" rel="noopener">
+          <div class="cover"><canvas data-art="stream"></canvas><span class="badge">HackPrinceton · Nov 2026</span></div>
+          <div class="body">
+            <h3>Abny <span class="arrow">↗</span></h3>
+            <p>A real-estate AI agent built in one weekend by a team of four. I led integration and wrote the FastAPI backend that streams the agent's progress to the UI as it works.</p>
+            <div class="tags"><span class="tag-chip">deep agents</span><span class="tag-chip">aws bedrock</span><span class="tag-chip">fastapi</span><span class="tag-chip">streaming</span></div>
           </div>
         </a>
         <a class="card proj reveal" href="https://arxiv.org/abs/2411.19799" target="_blank" rel="noopener">
-          <div class="cover"><canvas data-art="globe"></canvas><span class="badge">ICLR 2025</span></div>
+          <div class="cover"><canvas data-art="globe"></canvas><span class="badge">ICLR 2025 · paper</span></div>
           <div class="body">
             <h3>INCLUDE Benchmark <span class="arrow">↗</span></h3>
-            <p>A multilingual LLM benchmark covering 44 underrepresented languages. I built data extraction workflows with Beautiful Soup, prepared evaluation datasets, and supported the automated evaluation pipelines.</p>
-            <div class="tags"><span class="tag-chip">llm-eval</span><span class="tag-chip">beautifulsoup</span><span class="tag-chip">multilingual</span><span class="tag-chip">latex</span></div>
+            <p>Do LLMs understand the languages most of the world speaks? I co-authored this benchmark covering 44 underrepresented languages and built its data pipelines.</p>
+            <div class="tags"><span class="tag-chip">llm-eval</span><span class="tag-chip">python</span><span class="tag-chip">beautifulsoup</span><span class="tag-chip">multilingual</span></div>
           </div>
         </a>
       </div>
@@ -373,63 +421,73 @@
       <div class="timeline">
         <div class="job-wrap reveal"><div class="card job open">
           <span class="pin"></span>
-          <div class="job-top"><h3>Research Assistant <span class="at">@ Fordham University</span></h3><span class="when">Aug 2026 – Present</span></div>
-          <div class="loc">New York, NY</div>
+          <div class="job-top"><h3>Software Engineer <span class="at">@ Leo Business Group</span></h3><span class="when">Mar 2026 – Jun 2026 · contract</span></div>
+          <div class="loc">Addis Ababa, Ethiopia · fashion retail, sold mostly over Telegram</div>
           <ul><div>
-            <li>Built an automated Bash framework that runs unattended reboots and GRUB-level kernel reconfiguration across CloudLab and Chameleon testbeds, keeping data collection going through <span class="metric">multi-week runs</span>.</li>
-            <li>Benchmarked the performance cost of <span class="metric">15+ CPU security mitigations</span> (Spectre, Meltdown, Retbleed) across <span class="metric">20+ kernel boot configurations</span>.</li>
-            <li>Integrated SPEC CPU 2017/2026 into an automated cycling pipeline, producing reproducible measurements across mitigation states.</li>
-            <li>Engineered a systemd service with persistent state that coordinates multi-stage experiments across repeated reboots and automates log collection, compression and transfer.</li>
+            <li>Took <span class="hl">Suq</span>, a Telegram AI sales agent, from idea to production on FastAPI, PostgreSQL and Redis. It now serves <span class="metric">25K+ customers</span>.</li>
+            <li>Wired in <span class="metric">5 local payment gateways</span> so customers could pay without leaving the chat: <span class="metric">4,300 payments</span> and roughly <span class="metric">$30K</span> (4M+ ETB) in sales so far.</li>
+            <li>Replies went from <span class="metric">3 hours → 3 seconds</span>, manual messaging fell <span class="metric">80%</span>, and the sales team got back <span class="metric">40 hours a week</span>.</li>
           </div></ul>
           <div class="toggle">+ click to expand</div>
         </div></div>
         <div class="job-wrap reveal"><div class="card job">
           <span class="pin"></span>
           <div class="job-top"><h3>Software Engineer <span class="at">@ <a class="ul" href="https://www.turing.com/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Turing</a></span></h3><span class="when">Oct 2023 – Feb 2026</span></div>
-          <div class="loc">Palo Alto, CA · Remote</div>
+          <div class="loc">Palo Alto, CA · Remote · post-training data for frontier AI labs</div>
           <ul><div>
-            <li>Worked on a 10+ person team building a TypeScript data labeling platform used by <span class="metric">1,000+ labelers</span> on projects for Apple, Mistral AI and ServiceNow.</li>
-            <li>Cut manual review time by <span class="metric">80%</span> with a Python tool that checks LLM function-calling datasets for tool selection, parameter correctness and output quality.</li>
-            <li>Set up MCP servers and FastAPI backends on GCP so AI agents could reach internal evaluation tools through one shared interface.</li>
-            <li>Lowered LLM inference costs by <span class="metric">35%</span> through prompt tuning and caching, and made database queries <span class="metric">50%</span> faster with indexing.</li>
+            <li>One of 10+ engineers and PMs on the training-data platform (Next.js, FastAPI, GCP) where <span class="metric">1,000+ labelers</span> create post-training data for Apple, Mistral AI and ServiceNow.</li>
+            <li>Shipped full-stack labeling and review features, from the React/TypeScript screens down to the APIs behind them.</li>
+            <li>Made queries <span class="metric">2× faster</span> (2.0s → 1.0s at 100K+ tasks) by reading query plans, adding indexes and paginating.</li>
+            <li>Wrote a Python pipeline that checks agentic function-calling data automatically, which saved reviewers <span class="metric">125 hours a week</span>.</li>
+            <li>Built MCP servers and FastAPI services on GCP that gave AI agents one shared way into <span class="metric">5</span> internal evaluation tools.</li>
           </div></ul>
           <div class="toggle">+ click to expand</div>
         </div></div>
         <div class="job-wrap reveal"><div class="card job">
           <span class="pin"></span>
-          <div class="job-top"><h3>Software Engineer Intern <span class="at">@ Africa to Silicon Valley</span></h3><span class="when">Dec 2021 – Oct 2023</span></div>
-          <div class="loc">Addis Ababa, Ethiopia</div>
+          <div class="job-top"><h3>Software Engineer Intern <span class="at">@ <a class="ul" href="https://a2sv.org" target="_blank" rel="noopener" onclick="event.stopPropagation()">Africa to Silicon Valley</a></span></h3><span class="when">Dec 2021 – Oct 2023</span></div>
+          <div class="loc">Addis Ababa, Ethiopia · nonprofit training Africa's top CS students</div>
           <ul><div>
-            <li>Completed A2SV's intensive coaching in data structures, algorithms and systems design, applying it to production work.</li>
-            <li>Built an applicant management platform in C# / .NET Core that cut application processing time by <span class="metric">60%</span>.</li>
-            <li>Raised automated test coverage from <span class="metric">45% → 80%</span> with validation and unit tests (Shouldly, Moq).</li>
-            <li>Set up Docker and CI/CD pipelines on AWS, which cut deployment time by <span class="metric">60%</span>.</li>
+            <li>Built the applicant platform in C# and .NET Core on AWS, handling <span class="metric">2,000+ applicants</span> a year.</li>
+            <li>Replaced spreadsheets with automated reviews and a dashboard, so applications took <span class="metric">17 days instead of 30</span>.</li>
+            <li>Raised test coverage from <span class="metric">45% → 80%</span> (Shouldly, Moq) and cut deploy time <span class="metric">60%</span> with Docker CI/CD.</li>
           </div></ul>
           <div class="toggle">+ click to expand</div>
         </div></div>
       </div>
     </section>
 
+    <!-- TOOLBOX -->
+    <section id="toolbox" style="padding-top:60px">
+      <div class="sec-head reveal"><h2><span class="n">03.</span> Toolbox</h2><span style="font-size:12px;color:var(--overlay)">what I reach for</span></div>
+      <div class="toolbox">
+        <div class="card reveal"><h3><span>{ }</span> Languages</h3><div class="tags"><span class="tag-chip">java</span><span class="tag-chip">python</span><span class="tag-chip">typescript</span><span class="tag-chip">c#</span><span class="tag-chip">sql</span><span class="tag-chip">javascript</span><span class="tag-chip">bash</span></div></div>
+        <div class="card reveal"><h3><span>⇄</span> Systems &amp; cloud</h3><div class="tags"><span class="tag-chip">replication</span><span class="tag-chip">fault tolerance</span><span class="tag-chip">zookeeper</span><span class="tag-chip">aws</span><span class="tag-chip">gcp</span><span class="tag-chip">docker</span><span class="tag-chip">github actions</span><span class="tag-chip">linux</span></div></div>
+        <div class="card reveal"><h3><span>▤</span> Backend &amp; data</h3><div class="tags"><span class="tag-chip">fastapi</span><span class="tag-chip">.net core</span><span class="tag-chip">node.js</span><span class="tag-chip">postgresql</span><span class="tag-chip">redis</span><span class="tag-chip">react</span><span class="tag-chip">next.js</span></div></div>
+        <div class="card reveal"><h3><span>✦</span> AI engineering</h3><div class="tags"><span class="tag-chip">llm agents</span><span class="tag-chip">langgraph</span><span class="tag-chip">mcp</span><span class="tag-chip">rag</span><span class="tag-chip">claude code</span><span class="tag-chip">cursor</span></div></div>
+      </div>
+    </section>
+
     <!-- EDUCATION -->
     <section id="education" style="padding-top:60px">
-      <div class="sec-head reveal"><h2><span class="n">03.</span> Education</h2></div>
+      <div class="sec-head reveal"><h2><span class="n">04.</span> Education</h2></div>
       <div class="edu">
         <div class="card reveal"><div class="ico">🎓</div><div>
           <h3>Fordham University</h3><div class="deg">M.S. Data Science</div>
-          <div class="meta">New York, NY · Expected May 2028</div>
-          <p>Focus areas: data mining, machine learning and algorithms.</p>
+          <div class="meta">New York, NY · Aug 2026 – May 2028</div>
+          <p><span class="hl">Graduate Assistant</span>: measuring how much CPU security mitigations (Spectre, Meltdown and friends) slow real workloads, using SPEC CPU benchmarks. Studying algorithms, data mining and the math behind data science.</p>
         </div></div>
         <div class="card reveal"><div class="ico">🏛️</div><div>
           <h3>African Leadership University</h3><div class="deg">B.S. (Hons) Computer Science</div>
           <div class="meta">Kigali, Rwanda · 2021 – 2024</div>
-          <p>GPA 4.47 / 5.00, <span class="metric">Summa Cum Laude</span>, full merit scholarship. Coursework included OOP, web and mobile development, and cloud computing.</p>
+          <p>GPA 4.47 / 5.00, <span class="metric">Summa Cum Laude</span>, full merit scholarship. Core CS: data structures &amp; algorithms, object-oriented design, databases, software engineering and networks.</p>
         </div></div>
       </div>
     </section>
 
     <!-- DASHBOARD -->
     <section id="dashboard">
-      <div class="sec-head reveal"><h2><span class="n">04.</span> Dashboard</h2><span style="font-size:12px;color:var(--overlay)">go ahead, play with it</span></div>
+      <div class="sec-head reveal"><h2><span class="n">05.</span> Dashboard</h2><span style="font-size:12px;color:var(--overlay)">go ahead, play with it</span></div>
       <div class="bento">
         <div class="card c-theme reveal">
           <div class="label">🎨 Theme</div>
@@ -464,9 +522,9 @@
           <div class="langs" id="langs"></div>
         </div>
         <div class="card c-now reveal">
-          <div class="now-row"><span class="k">building</span><span class="v">RamHub</span></div>
+          <div class="now-row"><span class="k">just shipped</span><span class="v">Abny @ HackPrinceton</span></div>
           <div class="now-row"><span class="k">researching</span><span class="v">The cost of Spectre-class mitigations</span></div>
-          <div class="now-row"><span class="k">learning</span><span class="v">Data mining · ML algorithms</span></div>
+          <div class="now-row"><span class="k">learning</span><span class="v">Algorithms · data mining</span></div>
           <div class="now-row"><span class="k">offline</span><span class="v">Paddling · hiking · Ethiopian cooking</span></div>
         </div>
       </div>
@@ -474,8 +532,8 @@
 
     <!-- CTA -->
     <div class="card cta reveal" id="contact">
-      <h2>Looking for my next role 🚀</h2>
-      <p>I'm looking for internships in software engineering, ML or AI engineering. I enjoy working on LLM systems, evaluation tooling and backend infrastructure. Let's build something great together.</p>
+      <h2>Let's build something that stays up 🚀</h2>
+      <p>I'm looking for software engineering internships: backend, distributed systems, or AI agents in production. I'm based in New York, happy to relocate, and authorized to work in the U.S. through CPT.</p>
       <div class="socials">
         <a class="btn primary" href="mailto:abraham.diress.codes@gmail.com">Get in touch</a>
         <button class="btn" id="copyEmail">Copy email</button>
@@ -583,11 +641,11 @@
   };
 
   // marquee
-  const items = ['Fordham University','Turing','Africa to Silicon Valley','African Leadership University','ICLR 2025','LangGraph','RAG','MCP','PyTorch','FastAPI'];
+  const items = ['Turing','Leo Business Group','Africa to Silicon Valley','Fordham University','African Leadership University','ICLR 2025','HackPrinceton','Java','FastAPI','PostgreSQL','Redis','ZooKeeper','LangGraph','MCP','AWS','GCP'];
   $('#track').innerHTML = [...items, ...items].map(t => `<span>${t}</span><i>/</i>`).join('');
 
   // typed roles
-  const roles = ['data × software engineering', 'ml + data-intensive apps', 'data science @ fordham', 'building rag + agentic ai', 'llm evaluation nerd', 'mcp server tinkerer'];
+  const roles = ['software engineer', 'backends that stay up', 'wrote a kafka-style log for fun', 'shipping ai agents to prod', 'ex-turing · fordham ms', 'mcp server tinkerer'];
   let ri = 0, ci = 0, del = false;
   (function type() {
     const w = roles[ri]; $('#typed').textContent = w.slice(0, ci);
@@ -602,8 +660,8 @@
     e.target.classList.add('in'); io.unobserve(e.target);
     const v = e.target.querySelector('[data-count]');
     if (v) {
-      const end = +v.dataset.count, suf = v.dataset.suffix || '', t0 = performance.now();
-      const step = t => { const p = Math.min(1, (t - t0) / 1400), k = 1 - Math.pow(1 - p, 3); v.textContent = Math.round(end * k).toLocaleString() + suf; if (p < 1) requestAnimationFrame(step); };
+      const end = +v.dataset.count, suf = v.dataset.suffix || '', pre = v.dataset.prefix || '', t0 = performance.now();
+      const step = t => { const p = Math.min(1, (t - t0) / 1400), k = 1 - Math.pow(1 - p, 3); v.textContent = pre + Math.round(end * k).toLocaleString() + suf; if (p < 1) requestAnimationFrame(step); };
       requestAnimationFrame(step);
     }
   }), { threshold: .12 });
@@ -647,28 +705,36 @@
   <span class="p-acc">resume</span>     open my resume
   <span class="p-acc">clear</span>      clear the screen
   <span class="p-dim">…and maybe a few hidden ones</span>`,
-    whoami: () => `<span class="p-y">Abraham Diress</span>: Data Science MS @ Fordham (2028).
-B.S. CS, Summa Cum Laude from ALU. Ex-Turing SWE.
-I work where data meets software engineering,
-building ML and data-intensive apps end to end.
+    whoami: () => `<span class="p-y">Abraham Diress</span>: software engineer.
+Ex-Turing. Built Suq, an AI sales agent serving 25K+ people.
+M.S. Data Science @ Fordham (2028), B.S. CS Summa Cum Laude @ ALU.
+I like backends, distributed systems and AI agents in prod.
 Off-hours: paddling, hiking, cooking Ethiopian food.`,
     hobbies: () => `🛶 paddling      🥾 hiking      🍲 cooking Ethiopian food
 <span class="p-dim">ask me about my doro wat.</span>`,
-    skills: () => `<span class="p-acc">languages</span>  Python · TypeScript · JavaScript · Java · C# · SQL
-<span class="p-acc">ai/ml</span>      LLMs · RAG · Agentic AI · MCP · LangGraph · PyTorch
-<span class="p-acc">backend</span>    FastAPI · Node.js · .NET Core · PostgreSQL
-<span class="p-acc">infra</span>      Docker · AWS · GCP · CI/CD · Bash · systemd`,
-    projects: () => `<span class="p-green p-user">DocIntel</span>   RAG over technical docs (LangGraph, Qdrant, RAGAS)
-<span class="p-user">RamHub</span>     hub for Fordham international students (FastAPI, Next.js)
-<span class="p-user">INCLUDE</span>    multilingual LLM benchmark, 44 languages (ICLR 2025)`,
-    experience: () => `2026–now   Research Assistant   <span class="p-acc">Fordham University</span>
+    skills: () => `<span class="p-acc">languages</span>  Java · Python · TypeScript · C# · SQL · Bash
+<span class="p-acc">systems</span>    replication · fault tolerance · ZooKeeper · Linux
+<span class="p-acc">backend</span>    FastAPI · .NET Core · Node.js · PostgreSQL · Redis
+<span class="p-acc">cloud</span>      AWS · GCP · Docker · CI/CD · GitHub Actions
+<span class="p-acc">ai</span>         LLM agents · LangGraph · MCP · RAG · Claude Code`,
+    projects: () => `<span class="p-user">tributary</span>  Kafka-style replicated log in Java (ZooKeeper failover)
+<span class="p-user">suq</span>        Telegram AI sales agent, 25K+ customers, in-chat payments
+<span class="p-user">docintel</span>   agentic RAG over PDFs, Word and slides (LangGraph, Qdrant)
+<span class="p-user">abny</span>       real-estate AI agent @ HackPrinceton (Bedrock, FastAPI)
+<span class="p-user">include</span>    multilingual LLM benchmark, 44 languages (ICLR 2025)`,
+    experience: () => `2026       Software Engineer    <span class="p-acc">Leo Business Group</span>
 2023–2026  Software Engineer    <span class="p-acc">Turing</span>
-2021–2023  SWE Intern           <span class="p-acc">Africa to Silicon Valley</span>`,
+2021–2023  SWE Intern           <span class="p-acc">Africa to Silicon Valley</span>
+2026–now   Graduate Assistant   <span class="p-acc">Fordham University</span>`,
+    'cat tributary': () => `$ producer send orders "hello"   → offset 41, acked by 3/3 replicas
+$ kill -9 broker-1                → <span class="p-err">leader down</span>
+<span class="p-dim">zookeeper: electing new leader for orders-0…</span>
+$ consumer fetch orders 41        → <span class="p-user">"hello"</span>  <span class="p-dim">// nothing lost</span>`,
     contact: () => `email     <a class="ul" href="mailto:abraham.diress.codes@gmail.com">abraham.diress.codes@gmail.com</a>
 github    <a class="ul" href="https://github.com/abraham-diress" target="_blank" rel="noopener">github.com/abraham-diress</a>
 linkedin  <a class="ul" href="https://www.linkedin.com/in/abrahamdiress" target="_blank" rel="noopener">linkedin.com/in/abrahamdiress</a>`,
     resume: () => { open('resume.pdf', '_blank'); return 'opening resume.pdf…'; },
-    ls: () => `<span class="p-path">projects/</span>  <span class="p-path">experience/</span>  resume.pdf  secrets.txt`,
+    ls: () => `<span class="p-path">projects/</span>  <span class="p-path">experience/</span>  resume.pdf  secrets.txt  tributary`,
     'cat secrets.txt': () => `nice try 😄 but the real secret is: I write tests.`,
     'sudo hire-me': () => { burst(); return `<span class="p-user">[sudo] permission granted.</span> scheduling interview… 📅
 → <a class="ul" href="mailto:abraham.diress.codes@gmail.com?subject=Let's%20talk">send the invite</a>`; },
@@ -699,7 +765,7 @@ linkedin  <a class="ul" href="https://www.linkedin.com/in/abrahamdiress" target=
     else if (e.key === 'ArrowDown') { hi = Math.min(hist.length, hi + 1); inp.value = hist[hi] || ''; }
     else if (e.key === 'Tab') { e.preventDefault(); const m = Object.keys(CMDS).find(k => k.startsWith(inp.value) && inp.value); if (m) inp.value = m; }
   });
-  ['help','whoami','skills','hobbies','sudo hire-me'].forEach(c => {
+  ['help','whoami','projects','cat tributary','sudo hire-me'].forEach(c => {
     const b = document.createElement('button'); b.textContent = c; b.onclick = () => { run(c); inp.focus({ preventScroll: true }); };
     $('#chips').appendChild(b);
   });
@@ -726,9 +792,9 @@ linkedin  <a class="ul" href="https://www.linkedin.com/in/abrahamdiress" target=
     $('#commits').innerHTML = list.slice(0, 5).map(c => `<div class="commit"><span class="repo">${esc(c.repo)}</span> <span class="ago">${c.when ? '· ' + ago(c.when) : ''}</span><div class="msg">${esc(c.msg)}</div></div>`).join('');
   }
   renderCommits([
-    { repo: 'ramhub', msg: 'feat: drag-and-drop task boards' },
+    { repo: 'tributary', msg: 'Add tests, scripts, and README' },
     { repo: 'DocIntel', msg: 'Show a friendly error card instead of raw backend error text' },
-    { repo: 'DocIntel', msg: 'Add custom dark theme and example-question suggestions to the UI' },
+    { repo: 'tributary', msg: 'Simplify Tributary' },
   ]);
   // latest commits from the most recently pushed repos (events API no longer carries messages)
   fetch(`https://api.github.com/users/${USER}/repos?sort=pushed&per_page=6`).then(r => r.ok ? r.json() : Promise.reject())
@@ -801,6 +867,81 @@ linkedin  <a class="ul" href="https://www.linkedin.com/in/abrahamdiress" target=
         g.save(); g.translate(x + (cw - 16) / 2, y + 13); g.rotate(-.06 + Math.sin(t) * .03);
         g.shadowColor = A(accent); g.shadowBlur = 18; g.fillStyle = A(accent); g.fillRect(-(cw - 16) / 2, -13, cw - 16, 26);
         g.shadowBlur = 0; g.fillStyle = f.crust; g.fillRect(-(cw - 16) / 2 + 8, -3, 40, 5); g.restore();
+      } else if (kind === 'log') {
+        // replicated partition log: leader appends, followers catch up, leader crashes, failover
+        const cyc = 12, ph = t % cyc, epoch = Math.floor(t / cyc);
+        const crashed = ph > 7.5 ? (epoch % 3) : -1;            // which broker is down this cycle
+        const leader = crashed >= 0 ? (crashed + 1) % 3 : epoch % 3;
+        const rows = 3, top = 34, rh = (h - top - 22) / rows, cell = 18, gap = 4, x0 = 112;
+        const maxCells = Math.floor((w - x0 - 16) / (cell + gap));
+        const written = Math.min(maxCells, 3 + Math.floor(ph * 1.6));
+        g.font = '10px JetBrains Mono, monospace';
+        g.fillStyle = A('green'); g.fillText('acked: ' + (40 + epoch * 18 + written), w - 92, 20);
+        for (let r = 0; r < rows; r++) {
+          const y = top + r * rh + rh / 2, down = r === crashed, isL = r === leader;
+          g.fillStyle = down ? A('red') : isL ? A(accent) : f.sub;
+          g.font = (isL ? 'bold ' : '') + '11px JetBrains Mono, monospace';
+          g.fillText(`broker-${r}`, 14, y + 4);
+          g.font = '9px JetBrains Mono, monospace'; g.fillStyle = f.overlay;
+          g.fillText(down ? 'down ✕' : isL ? 'leader' : 'follower', 14, y + 16);
+          const lag = isL ? 0 : (ph * 7 + r * 3) % 3 < 1 ? 1 : 0;
+          const n = down ? Math.max(0, written - 2) : written - lag;
+          for (let k = 0; k < maxCells; k++) {
+            const cx = x0 + k * (cell + gap);
+            g.globalAlpha = down ? .35 : 1;
+            if (k < n) { g.fillStyle = k === n - 1 && isL ? A(accent) : f.s1; }
+            else { g.fillStyle = f.mantle; }
+            g.fillRect(cx, y - cell / 2, cell, cell);
+            if (k % 6 === 0 && k) { g.fillStyle = f.s2; g.fillRect(cx - 3, y - cell / 2 - 4, 1, cell + 8); } // segment boundary
+          }
+          g.globalAlpha = 1;
+          // replication pulse from leader to this follower
+          if (!isL && !down) {
+            const ly = top + leader * rh + rh / 2, p = (t * 1.4 + r * .37) % 1, cx = x0 + (n - 1) * (cell + gap) + cell / 2;
+            g.fillStyle = A('green'); g.globalAlpha = 1 - p * .6;
+            g.beginPath(); g.arc(cx, ly + (y - ly) * p, 3, 0, 7); g.fill(); g.globalAlpha = 1;
+          }
+        }
+        if (crashed >= 0 && ph < 9) { g.fillStyle = A('peach'); g.font = '10px JetBrains Mono, monospace'; g.fillText('zookeeper: electing new leader…', x0, h - 8); }
+      } else if (kind === 'chat') {
+        // telegram-style sales conversation that ends in a payment
+        const script = [
+          ['in', 'Selam! Do you have this dress in M?'],
+          ['out', 'Yes, 3 left in M. 2,400 ETB 👗'],
+          ['in', 'Great, I\'ll take it'],
+          ['out', 'Pay here 👇 telebirr · CBE · card'],
+          ['pay', '✓ Paid 2,400 ETB · order #4301'],
+        ];
+        const step = 1.3, cycle = script.length * step + 2.5, ph = t % cycle, shown = Math.min(script.length, Math.floor(ph / step) + 1);
+        g.font = '9px JetBrains Mono, monospace'; g.fillStyle = A('green'); g.fillText('● replies in ~3s', w - 104, 20);
+        let y = h - 10;
+        for (let i = shown - 1; i >= 0; i--) {
+          const [who, msg] = script[i];
+          g.font = '10px JetBrains Mono, monospace';
+          const tw = Math.min(w - 50, g.measureText(msg).width + 16), bh = 22;
+          y -= bh + 6; if (y < 30) break;
+          const age = i === shown - 1 ? Math.min(1, (ph - i * step) / .25) : 1;
+          const x = who === 'in' ? 10 : w - tw - 10;
+          g.globalAlpha = age;
+          g.fillStyle = who === 'in' ? f.s0 : who === 'pay' ? A('green') : A(accent);
+          g.beginPath(); g.roundRect ? g.roundRect(x, y, tw, bh, 8) : g.rect(x, y, tw, bh); g.fill();
+          g.fillStyle = who === 'in' ? f.text : f.crust; g.fillText(msg, x + 8, y + 15);
+          g.globalAlpha = 1;
+        }
+      } else if (kind === 'stream') {
+        // agent steps streaming to the UI
+        const steps = ['search listings', 'pull comps', 'check zoning', 'score deals', 'draft report'];
+        const cycle = 9, ph = t % cycle;
+        g.font = '10px JetBrains Mono, monospace';
+        g.fillStyle = f.overlay; g.fillText('GET /agent/stream · text/event-stream', 14, h - 10);
+        steps.forEach((s, i) => {
+          const y = 44 + i * 22, p = Math.max(0, Math.min(1, (ph - i * 1.4) / 1.4));
+          g.fillStyle = p >= 1 ? A('green') : p > 0 ? A(accent) : f.s1;
+          g.fillText(p >= 1 ? '✓' : p > 0 ? '⟳' : '·', 14, y + 4);
+          g.fillStyle = p > 0 ? f.text : f.overlay; g.fillText(s, 30, y + 4);
+          g.fillStyle = f.s0; g.fillRect(140, y - 3, w - 160, 6);
+          g.fillStyle = p >= 1 ? A('green') : A(accent); g.fillRect(140, y - 3, (w - 160) * p, 6);
+        });
       } else {
         // dotted rotating globe with 44 highlighted points
         const cx = w / 2, cy = h / 2, R = Math.min(w, h) * .38;
